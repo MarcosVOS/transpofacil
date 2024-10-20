@@ -5,6 +5,10 @@
   --gray-300: #D9D9D9
 }
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;

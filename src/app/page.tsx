@@ -14,7 +14,7 @@ export default function Home() {
             priority
             placeholder="blur"
             blurDataURL="data:image/svg+xml;base64,..."
-        /> 
+        />
       </main>
       <footer className={styles.footer}>
       </footer>
