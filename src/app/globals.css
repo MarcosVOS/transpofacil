@@ -1,6 +1,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  --gray-300: #D9D9D9
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,7 +20,7 @@ body {
 
 body {
   color: var(--foreground);
-  background: var(--background);
+  background: var(--gray-300);
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
