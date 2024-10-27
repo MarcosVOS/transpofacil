@@ -1,8 +1,7 @@
-import Image from "next/image";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label"
-import { Button } from "@/components/ui/button"
-
+import Image from 'next/image';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Button } from '@/components/ui/button';
 
 export default function Home() {
   return (
@@ -18,26 +17,28 @@ export default function Home() {
           placeholder="blur"
           blurDataURL="data:image/svg+xml;base64,..."
         />
-        <form action="" className="mt-4 flex flex-col gap-2" >
+        <form action="" className="mt-4 flex flex-col gap-2">
           <Label htmlFor="email">Email</Label>
-          <Input type="email"
+          <Input
+            type="email"
             id="email"
             placeholder="Digite seu e-mail"
             autoComplete="email"
           />
           <Label htmlFor="password">Senha</Label>
-          <Input type="password"
+          <Input
+            type="password"
             id="password"
             placeholder="Digite sua senha"
-            autoComplete="current-password" 
+            autoComplete="current-password"
             className="w-80"
           />
-          <Button type="submit" variant="green">Entrar</Button>
+          <Button type="submit" variant="green">
+            Entrar
+          </Button>
         </form>
-
       </main>
-      <footer>
-      </footer>
+      <footer></footer>
     </div>
   );
 }
