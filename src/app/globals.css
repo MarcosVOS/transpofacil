@@ -1,8 +1,9 @@
 :root {
-  --gray-300: #D9D9D9
+  --gray-300: #D9D9D9;
+  --green-300: #3A8C46;
+  --green-300-hover: #4FA45B;
   /* #3365A6 */
   /* #2B5F8C */
-  /* #3A8C46 */
   /* #D9D9D9 */
   /* #0D0D0D */
 }

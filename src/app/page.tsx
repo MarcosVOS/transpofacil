@@ -23,7 +23,7 @@ export default function Home() {
           <Input type="email" id="email" placeholder="Digite seu e-mail" autoComplete="email"/>
           <Label htmlFor="password">Senha</Label>
           <Input type="password" id="password" placeholder="Digite sua senha" autoComplete="current-password"/>
-          <Button type="submit">Entrar</Button>
+          <Button type="submit" variant="green">Entrar</Button>
         </form>
         
       </main>
