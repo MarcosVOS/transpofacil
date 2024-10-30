@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
+import { signIn } from '@/app/actions/auth';
 
 export default function Home() {
   return (
@@ -17,11 +18,12 @@ export default function Home() {
           placeholder="blur"
           blurDataURL="data:image/svg+xml;base64,..."
         />
-        <form action="" className="mt-4 flex flex-col gap-2">
+        <form action={signIn} className="mt-4 flex flex-col gap-2">
           <Label htmlFor="email">Email</Label>
           <Input
             type="email"
             id="email"
+            name="email"
             placeholder="Digite seu e-mail"
             autoComplete="email"
           />
@@ -29,6 +31,7 @@ export default function Home() {
           <Input
             type="password"
             id="password"
+            name="password"
             placeholder="Digite sua senha"
             autoComplete="current-password"
             className="w-80"
