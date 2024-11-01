@@ -18,6 +18,7 @@ export default function Home() {
   return (
     <div className="w-[100vw] h-[100vh]">
       <div className="bg-white-700 mx-auto w-[100%] h-[100%]">
+        {/* @ts-ignore */}
         <Map posix={location} />
       </div>
     </div>
