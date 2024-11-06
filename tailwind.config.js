@@ -57,8 +57,8 @@ module.exports = {
         },
       },
       zIndex: {
-        '1000': '1000'
-      }
+        1000: '1000',
+      },
     },
   },
   // eslint-disable-next-line @typescript-eslint/no-require-imports
