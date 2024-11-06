@@ -56,6 +56,9 @@ module.exports = {
           5: 'hsl(var(--chart-5))',
         },
       },
+      zIndex: {
+        '1000': '1000'
+      }
     },
   },
   // eslint-disable-next-line @typescript-eslint/no-require-imports

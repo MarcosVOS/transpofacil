@@ -19,7 +19,7 @@ const defaults = {
 const Map = (Map: MapProps) => {
     const { zoom = defaults.zoom, posix } = Map
 
-    return (
+    return (<>
         <MapContainer
             center={posix}
             zoom={zoom}
@@ -35,6 +35,7 @@ const Map = (Map: MapProps) => {
                 <Popup>Vocẽ está aqui</Popup>
             </Marker>
         </MapContainer>
+    </>
     )
 }
 
