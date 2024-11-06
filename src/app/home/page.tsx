@@ -8,6 +8,17 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Search, UserRound } from 'lucide-react';
 import { Avatar, AvatarImage } from '@radix-ui/react-avatar';
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer"
+
 
 export default function Home() {
   const location = useGeolocation();
@@ -75,9 +86,27 @@ export default function Home() {
                 <option key={index} value={suggestion} />
               ))}
             </datalist>
-            <Button variant="green">
-              <Search />
-            </Button>
+
+
+            <Drawer>
+              <DrawerTrigger>
+                <Button variant="green">
+                  <Search />
+                </Button>
+              </DrawerTrigger>
+              <DrawerContent className="z-[1002] h-[60vh]">
+                <DrawerHeader>
+                  <DrawerTitle>Are you absolutely sure?</DrawerTitle>
+                  <DrawerDescription>This action cannot be undone.</DrawerDescription>
+                </DrawerHeader>
+                <DrawerFooter>
+                  <Button>Submit</Button>
+                  <DrawerClose>
+                    <Button variant="outline">Cancel</Button>
+                  </DrawerClose>
+                </DrawerFooter>
+              </DrawerContent>
+            </Drawer>
           </div>
         </div>
 
