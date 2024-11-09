@@ -17,13 +17,17 @@ const accounts = [
 ];
 
 const signIn = async (formData: FormData) => {
-  const formDataRaw = {
-    email: formData.get('email') as string,
-    password: formData.get('password') as string,
-  };
+  if (
+    checksAuthorization(
+      formData.get('email') as string,
+      formData.get('password') as string,
+    )
+  ) {
+    const account = accounts.find((account) => account.email === formData.get('email'));
 
-  if (checksAuthorization(formDataRaw.email, formDataRaw.password)) {
-    const cookieAuth = await generateToken(formDataRaw);
+    console.log('AccountStatus: ', account);
+
+    const cookieAuth = await generateToken(account);
     cookies().set({
       name: 'transpofacil-v.1.0.0',
       value: cookieAuth,
@@ -40,9 +44,8 @@ const signIn = async (formData: FormData) => {
 const checksAuthorization = (email: string, password: string): Boolean => {
   const validAccount =
     accounts.filter((account) => {
-      account.email === email && account.password === password;
+      return account.email === email && account.password === password;
     }).length > 0;
-
   return validAccount;
 };
 
