@@ -4,7 +4,13 @@ import { generateToken, verifyToken } from '@/utils/jwt';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
-const accounts = [
+export interface account {
+  name: string;
+  email: string;
+  password: string;
+}
+
+const accounts: account[] = [
   { name: 'marcos', email: 'marcos@marcos.com', password: 'marcos1234' },
   { name: 'guilherme', email: 'guilherme@guilherme.com', password: 'guilherme1234' },
   { name: 'teste', email: 'teste@teste.com', password: 'teste1234' },

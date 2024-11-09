@@ -15,6 +15,7 @@ import {
 import Maps from './map';
 import { cookies } from 'next/headers';
 import { verifyToken } from '@/utils/jwt';
+import { account } from '../actions/auth';
 
 const suggestions = [
   'Amador Bueno', 'Brás', 'Bruno Covas Mendes Vila Natal', 'Calmon Viana',
@@ -27,11 +28,24 @@ const suggestions = [
 export default async function Home() {
   async function create() {
     'use server'
-    const session = await verifyToken(cookies().get('transpofacil-v.1.0.0')!.value)
-    console.log(">>> session: ", session)
+    const payload = await verifyToken(cookies().get('transpofacil-v.1.0.0')!.value)
+
+    if (payload === 'invalid token') {
+      console.log('Token inválido');
+      throw new Error('Invalid token');
+    }
+
+    return {
+      name: payload.payload.name as string,
+      email: payload.payload.email as string,
+      password: payload.payload.password as string,
+    };
   }
 
-  create()
+  const currentUser: account = await create()
+
+
+  console.log("currentUser: ", currentUser)
 
 
   return (
@@ -63,13 +77,13 @@ export default async function Home() {
               </DrawerTrigger>
               <DrawerContent className="z-[1002] h-[60vh]">
                 <DrawerHeader>
-                  <DrawerTitle>Are you absolutely sure?</DrawerTitle>
-                  <DrawerDescription>This action cannot be undone.</DrawerDescription>
+                  <DrawerTitle>Sejá bem vindo(a) {currentUser.name}</DrawerTitle>
+                  <DrawerDescription>Tudo certo</DrawerDescription>
                 </DrawerHeader>
-                <DrawerFooter>
-                  <Button>Submit</Button>
+                <DrawerFooter className='flex flex-row justify-center'>
+                  <Button variant="green">Comprar</Button>
                   <DrawerClose>
-                    <Button variant="outline">Cancel</Button>
+                    <Button variant="destructive">Cancelar</Button>
                   </DrawerClose>
                 </DrawerFooter>
               </DrawerContent>
