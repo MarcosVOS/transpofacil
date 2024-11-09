@@ -19,35 +19,34 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer"
 
+const suggestions = [
+  'Amador Bueno',
+  'Brás',
+  'Bruno Covas Mendes Vila Natal',
+  'Calmon Viana',
+  'Capão Redondo',
+  'Chácara Klabin',
+  'Corinthians-Itaquera',
+  'Estudantes',
+  'Jabaquara',
+  'Jardim Colonial',
+  'Julio Prestes',
+  'Jundiai',
+  'Luz',
+  'Osasco',
+  'Palmeiras-Barra Funda',
+  'Rio Grande da Serra',
+  'Tamanduatei',
+  'Tucuruvi',
+  'Vila Madalena',
+  'Vila Prudente',
+  'Vila Sônia',
+].sort();
+
 
 export default function Home() {
   const location = useGeolocation();
-
   const [query, setQuery] = useState('');
-
-  const suggestions = [
-    'Amador Bueno',
-    'Brás',
-    'Bruno Covas Mendes Vila Natal',
-    'Calmon Viana',
-    'Capão Redondo',
-    'Chácara Klabin',
-    'Corinthians-Itaquera',
-    'Estudantes',
-    'Jabaquara',
-    'Jardim Colonial',
-    'Julio Prestes',
-    'Jundiai',
-    'Luz',
-    'Osasco',
-    'Palmeiras-Barra Funda',
-    'Rio Grande da Serra',
-    'Tamanduatei',
-    'Tucuruvi',
-    'Vila Madalena',
-    'Vila Prudente',
-    'Vila Sônia',
-  ].sort();
 
   const Map = useMemo(
     () =>

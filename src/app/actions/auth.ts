@@ -4,28 +4,16 @@ import { generateToken, verifyToken } from '@/utils/jwt';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
-const emails = [
-  'marcos@marcos.com',
-  'guilherme@guilherme.com',
-  'teste@teste.com',
-  'renan@renan.com',
-  'stefani@stefani.com',
-  'ana@ana.com',
-  'gi@gi.com',
-  'julia@julia.com',
-  'matheus@matheus.com',
-];
-
-const passwords = [
-  'marcos1234',
-  'guilherme1234',
-  'teste1234',
-  'renan1234',
-  'stefani1234',
-  'ana1234',
-  'gi1234',
-  'julia1234',
-  'matheus1234',
+const accounts = [
+  { name: 'marcos', email: 'marcos@marcos.com', password: 'marcos1234' },
+  { name: 'guilherme', email: 'guilherme@guilherme.com', password: 'guilherme1234' },
+  { name: 'teste', email: 'teste@teste.com', password: 'teste1234' },
+  { name: 'renan', email: 'renan@renan.com', password: 'renan1234' },
+  { name: 'stefani', email: 'stefani@stefani.com', password: 'stefani1234' },
+  { name: 'ana', email: 'ana@ana.com', password: 'ana1234' },
+  { name: 'gi', email: 'gi@gi.com', password: 'gi1234' },
+  { name: 'julia', email: 'julia@julia.com', password: 'julia1234' },
+  { name: 'matheus', email: 'matheus@matheus.com', password: 'matheus1234' },
 ];
 
 const signIn = async (formData: FormData) => {
@@ -50,11 +38,12 @@ const signIn = async (formData: FormData) => {
 };
 
 const checksAuthorization = (email: string, password: string): Boolean => {
-  const validEmail = emails.filter((emailIn) => emailIn === email).length > 0;
-  const validPassword =
-    passwords.filter((passwordIn) => passwordIn === password).length > 0;
+  const validAccount =
+    accounts.filter((account) => {
+      account.email === email && account.password === password;
+    }).length > 0;
 
-  return validEmail && validPassword;
+  return validAccount;
 };
 
 export { signIn };

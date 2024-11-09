@@ -15,7 +15,9 @@ export async function generateToken(payload: any): Promise<string> {
 }
 
 export async function verifyToken(token: string) {
-  const { payload } = await jwtVerify(token, new TextEncoder().encode(secretKey));
-
-  return payload;
+  try {
+    return await jwtVerify(token, new TextEncoder().encode(secretKey));
+  } catch (error) {
+    return 'invalid token';
+  }
 }
