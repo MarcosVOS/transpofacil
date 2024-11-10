@@ -13,9 +13,11 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import Maps from './map';
-import { cookies } from 'next/headers';
+import { cookies } from 'next/headers'
 import { verifyToken } from '@/utils/jwt';
 import { account } from '../actions/auth';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import { Card, CardContent } from '@/components/ui/card';
 
 const suggestions = [
   'Amador Bueno', 'Brás', 'Bruno Covas Mendes Vila Natal', 'Calmon Viana',
@@ -24,6 +26,49 @@ const suggestions = [
   'Palmeiras-Barra Funda', 'Rio Grande da Serra', 'Tamanduatei', 'Tucuruvi',
   'Vila Madalena', 'Vila Prudente', 'Vila Sônia'
 ].sort();
+
+const ticketTimetable = [
+  "05:00",
+  "05:30",
+  "06:00",
+  "06:30",
+  "07:00",
+  "07:30",
+  "08:00",
+  "08:30",
+  "09:00",
+  "09:30",
+  "10:00",
+  "10:30",
+  "11:00",
+  "11:30",
+  "12:00",
+  "12:30",
+  "13:00",
+  "13:30",
+  "14:00",
+  "14:30",
+  "15:00",
+  "15:30",
+  "16:00",
+  "16:30",
+  "17:00",
+  "17:30",
+  "18:00",
+  "18:30",
+  "19:00",
+  "19:30",
+  "20:00",
+  "20:30",
+  "21:00",
+  "21:30",
+  "22:00",
+  "22:30",
+  "23:00",
+  "23:30",
+  "00:00",
+  "00:30",
+]
 
 export default async function Home() {
   async function create() {
@@ -76,10 +121,38 @@ export default async function Home() {
                 </Button>
               </DrawerTrigger>
               <DrawerContent className="z-[1002] h-[60vh]">
-                <DrawerHeader>
+                <DrawerHeader >
                   <DrawerTitle>Sejá bem vindo(a) {currentUser.name}</DrawerTitle>
-                  <DrawerDescription>Tudo certo</DrawerDescription>
+                  <DrawerDescription>Por favor selecione o ticket desejado</DrawerDescription>
                 </DrawerHeader>
+
+                <div className='h-[90%] flex justify-center items-center'>
+                  <Carousel
+                    opts={{
+                      align: "start",
+                    }}
+                    orientation="vertical"
+                    className="w-full max-w-xs"
+                  >
+                    <CarouselContent className="-mt-1 h-[200px]">
+                      {ticketTimetable.map((hour, index) => (
+                        <CarouselItem key={index} className="pt-1 md:basis-1/2">
+                          <div className="p-1">
+                            <Card>
+                              <CardContent className="flex items-center justify-center p-6">
+                                <span className="text-3xl font-semibold">{hour}</span>
+                              </CardContent>
+                            </Card>
+                          </div>
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                    <CarouselPrevious />
+                    <CarouselNext />
+                  </Carousel>
+                </div>
+
+
                 <DrawerFooter className='flex flex-row justify-center'>
                   <Button variant="green">Comprar</Button>
                   <DrawerClose>
