@@ -4,7 +4,7 @@ import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { signIn } from '@/app/actions/auth';
 
-export default function Home() {
+export default function Login() {
   return (
     <div>
       <main className="flex flex-col items-center justify-center min-h-screen p-4">
