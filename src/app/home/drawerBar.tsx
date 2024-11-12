@@ -123,32 +123,48 @@ export default function DrawerMaps({ currentUser }: DrawerMapsProps) {
                   <DrawerTitle>Sejá bem vindo(a) {currentUser.name}</DrawerTitle>
                   <div className='flex gap-1 justify-center items-center'>
                     <TrainFrontTunnel size={32} />
-                    <h2 className='font-black text-xl'>Estação Selecionada: </h2>
+                    <h2 className='font-black text-xl'>Estação Selecionada: {searchValue}</h2>
                   </div>
-                  <DrawerDescription>Por favor selecione o ticket horario desejado:</DrawerDescription>
                 </DrawerHeader>
 
-                <div className='h-[90%] flex justify-center items-center'>
+                <div className='h-[90%] flex flex-col justify-center items-center'>
                   <div>
-                    Estação:
+                    Horarios disponiveis:
                   </div>
-                  <Carousel className="w-full max-w-sm">
-                    <CarouselContent className="-ml-1">
-                      {ticketTimetable.map((hour, index) => (
-                        <CarouselItem key={index} className="pl-1 md:basis-1/2 lg:basis-1/3">
-                          <div className="p-1">
-                            <Card>
-                              <CardContent className="flex aspect-square items-center justify-center p-6">
-                                <span className="text-2xl font-semibold">{hour}</span>
-                              </CardContent>
-                            </Card>
-                          </div>
-                        </CarouselItem>
-                      ))}
-                    </CarouselContent>
-                    <CarouselPrevious />
-                    <CarouselNext />
-                  </Carousel>
+
+                  <div>
+
+                    <Carousel className="w-full max-w-md"> {/* Aumenta a largura máxima do Carousel */}
+                      <CarouselContent className="-ml-1 w-full">
+                        {ticketTimetable.map((hour, index) => (
+                          <CarouselItem key={index} className="pl-1 md:basis-1/2 lg:basis-1/3">
+                            <div className="p-2">
+                              <Card className="w-full h-full"> {/* Define uma altura maior */}
+                                <CardContent className="flex items-center justify-center p-4"> {/* Aumenta o padding */}
+                                  <div className="flex flex-col items-center">
+                                    <div className='flex gap-4 items-center'>
+                                      <span className="text-sm font-semibold">Saida:</span>
+                                      <span>{hour}</span>
+                                    </div>
+
+                                    <div className='flex gap-4 items-center'>
+                                      <span className="text-sm font-semibold">Chegada:</span>
+                                      <span>{index + 1 < ticketTimetable.length ? ticketTimetable[index + 1] : "01:00"}</span>
+                                    </div>
+
+
+                                  </div>
+                                </CardContent>
+                              </Card>
+                            </div>
+                          </CarouselItem>
+                        ))}
+                      </CarouselContent>
+                      <CarouselPrevious />
+                      <CarouselNext />
+                    </Carousel>
+
+                  </div>
                 </div>
 
 
